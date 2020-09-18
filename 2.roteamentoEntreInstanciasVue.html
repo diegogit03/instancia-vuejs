@@ -20,11 +20,20 @@
         <p>
             Titulo: {{ titulo }}
         </p>
+        <button @click="alterarTitulo">Alterar titulo</button>
     </div>
 
     <script type="text/javascript">
+        
+        /*
     
-        new Vue({
+            Para rotearmos o conteudo da primeira instancia criaremos 
+            ela dentro de uma variavel chamada vm1.
+
+            obs: vm é uma convenção que significa Vue Model
+
+        */
+        var vm1 = new Vue({
             el: '#app1',
             data: {
                 titulo: 'Instância Vue 1',
@@ -54,10 +63,15 @@
             }
         });
 
-        new Vue({
+        var vm2 = new Vue({
             el: '#app2',
             data: {
                 titulo: 'Instância Vue 2'
+            },
+            methods: {
+                alterarTitulo: function(event){
+                    vm1.titulo = 'Vue js 1';
+                }
             }
         });
 
