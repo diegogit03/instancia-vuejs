@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>VueJS</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+    <div id="app">
+        <h1>Instancia Vue</h1>
+        <p>{{ titulo }}</p>
+
+        <h3>Propriedades dinamicas</h3>
+        <p>{{ novaPropriedade }}</p>
+        <p>{{ usuario }}</p>
+    </div>
+
+    <script type="text/javascript">
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                /*
+            
+                    Após criarmos uma var em data, o view faz um proxy
+                    e deixa ela disponivel para utilizarmos com this
+
+                */
+                titulo: 'Repo de VueJS',
+                usuario: {}
+            }
+        });
+
+        // vm.novaPropriedade = 'Prop'; // Não reativo!
+
+        /*
+    
+            Por que não reativo?
+
+            O vue como dito acima faz um proxy em suas propriedades da instancia
+            porém só quando é instanciado, se injetarmos uma proprieda depois dele
+            ser instanciado, ela será uma propriedade qualquer.
+
+
+        */
+        console.log(vm);
+
+        setTimeout(function(){
+            vm.novaPropriedade = 'Prop';
+            /* 
+            
+                após o set ser executado a propriedade de cima se torna 
+                reativa poís o proxy será refeito!
+
+             */
+            vm.$set(vm.usuario, 'Nome', 'Diego Henrique');
+            setTimeout(function(){
+                vm.novaPropriedade = 'propriedade Refeita!';
+                vm.$set(vm.usuario, 'Email', 'Diego@email.com');
+            }, 3000);
+        }, 3000);
+
+    </script>
+    
+</body>
+</html>
