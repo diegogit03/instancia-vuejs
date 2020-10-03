@@ -15,17 +15,24 @@
         var vm = new Vue({
             el: '#app',
             data: {
-                titulo: 'VueJS'
+                titulo: 'Vue'
             },
             methods: {
                 alterarTitulo: function(event){
                     this.$refs.meuTitulo.innerText = 'Outro titulo';
+                    // A propriedade titulo em si não será modificada
+                    console.log(this.titulo);
                 }
             }
         });
 
         console.log(vm);
 
+        setTimeout(() => {
+            console.log('mudar titulo!');
+            vm.titulo = 'instancia VueJS';
+            console.log(vm.titulo);
+        }, 5000);
 
     </script>
     
