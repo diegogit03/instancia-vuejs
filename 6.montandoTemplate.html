@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>VueJS</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>{{ titulo }}</h2>
+    </div>
+
+    <div id="app2">
+        
+    </div>
+
+    <script type="text/javascript">
+    
+        var vm = new Vue({
+            data: {
+                titulo: 'Vue'
+            }
+        });
+
+        // com o comandos mount, conseguimos montar o template após criar a instancia vue
+        setTimeout(function(){
+            vm.$mount('#app');
+            console.log('Template montado!');
+        }, 3000);
+
+        var vm2 = new Vue({
+            template: '<h1>Segunda instancia Vue</h1>'
+        });
+
+        vm2.$mount('#app2')
+
+    </script>
+    
+</body>
+</html>
