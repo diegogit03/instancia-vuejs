@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>VueJS</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>{{ titulo }}</h2>
+        <button @click="alterarTitulo">Alterar</button>
+        <button @click="destruirInstancia">Destruir</button>
+    </div>
+
+    <script type="text/javascript">
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                titulo: 'VueJS'
+            },
+            methods: {
+                alterarTitulo(event) {
+                    this.titulo = 'VueJS Alterado';
+                },
+                destruirInstancia(event) {
+                    this.$destroy();
+                }
+            },
+            beforeCreate() {
+                console.log('01 - beforeCreate');
+            },
+            created() {
+                console.log('02 - created');
+            },
+            beforeMount() {
+                console.log('03 - beforemount');
+            },
+            mounted() {
+                console.log('04 - mounted');
+            },
+            beforeUpdate() {
+                console.log('05 - beforeUpdate');
+            },
+            updated() {
+                console.log('06 - updated');
+            },
+            beforeDestroy() {
+                console.log('07 - beforeDestroy');
+            },
+            destroyed() {
+                console.log('08 - destroyed');
+            },
+        });
+
+    </script>
+    
+</body>
+</html>
